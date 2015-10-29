@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-type iBeaconPacket struct {
+type IBeaconPacket struct {
 	Interf string
 	Uuid   string
 	Major  int
@@ -16,9 +16,9 @@ type iBeaconPacket struct {
 	Rssi   int
 }
 
-func NewIBPacket(line string) *iBeaconPacket {
+func NewIBPacket(line string) *IBeaconPacket {
 	vals := strings.Split(line, " ")
-	return &iBeaconPacket{
+	return &IBeaconPacket{
 		Uuid:  parseUuid(vals),
 		Major: parseMajor(vals),
 		Minor: parseMinor(vals),
@@ -36,7 +36,7 @@ func IsValid(str string) bool {
 	return r.MatchString(str)
 }
 
-func (ibp *iBeaconPacket) MapKey() string {
+func (ibp *IBeaconPacket) MapKey() string {
 	return fmt.Sprintf("%v|%05d|%05d", ibp.Uuid, ibp.Major, ibp.Minor)
 }
 
@@ -71,6 +71,6 @@ func parseRssi(vals []string) int {
 	return int(rssi) - 256
 }
 
-func (ibp *iBeaconPacket) ToString() string {
+func (ibp *IBeaconPacket) ToString() string {
 	return fmt.Sprintf("INT %v UUID %v MAJOR %v MINOR %v RSSI %d", ibp.Interf, ibp.Uuid, ibp.Major, ibp.Minor, ibp.Rssi)
 }
