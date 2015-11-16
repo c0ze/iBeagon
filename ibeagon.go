@@ -37,7 +37,7 @@ func IsValid(str string) bool {
 }
 
 func (ibp *IBeaconPacket) MapKey() string {
-	return fmt.Sprintf("%v|%05d|%05d", ibp.Uuid, ibp.Major, ibp.Minor)
+	return fmt.Sprintf("IBE_%05d%05d", ibp.Major, ibp.Minor)
 }
 
 func parseUuid(vals []string) string {
