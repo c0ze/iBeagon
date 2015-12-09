@@ -113,13 +113,13 @@ func TestToString(t *testing.T) {
 
 func TestMapKey(t *testing.T) {
 	ibp := NewIBPacket(Packet1)
-	packet1MapKey := "B9407F30-F5F8-466E-AFF9-25556B57FE6D|25110|65216"
+	packet1MapKey := "IBE_2511065216"
 	if packet1MapKey != ibp.MapKey() {
 		t.Errorf("MapKey failed for packet1 \nexpected: %v\ngot: %v", packet1MapKey, ibp.MapKey())
 	}
 
 	ibp = NewIBPacket(Packet2)
-	packet2MapKey := "B9407F30-F5F8-466E-AFF9-25556B57FE6D|02731|34771"
+	packet2MapKey := "IBE_0273134771"
 	if packet2MapKey != ibp.MapKey() {
 		t.Errorf("MapKey failed for packet2 \nexpected: %v\ngot: %v", packet2MapKey, ibp.MapKey())
 	}
